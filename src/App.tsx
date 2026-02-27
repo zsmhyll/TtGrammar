@@ -9,7 +9,8 @@ import {
   BookOpen, 
   Trophy,
   Filter,
-  Info
+  Info,
+  LogOut
 } from 'lucide-react';
 import { QUESTIONS } from './data/questions';
 import { Question, Difficulty, GrammarPoint, Option } from './types';
@@ -275,13 +276,22 @@ export default function App() {
                     提交答案
                   </button>
                 ) : (
-                  <button
-                    onClick={handleNext}
-                    className="px-8 py-4 bg-gray-900 text-white rounded-2xl font-bold hover:bg-black transition-all flex items-center gap-2"
-                  >
-                    {currentIndex < filteredQuestions.length - 1 ? '下一题' : '查看结果'}
-                    <ChevronRight className="w-5 h-5" />
-                  </button>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={handleNext}
+                      className="px-8 py-4 bg-gray-900 text-white rounded-2xl font-bold hover:bg-black transition-all flex items-center gap-2"
+                    >
+                      {currentIndex < filteredQuestions.length - 1 ? '下一题' : '查看结果'}
+                      <ChevronRight className="w-5 h-5" />
+                    </button>
+                    <button
+                      onClick={() => setShowResults(true)}
+                      className="px-6 py-4 bg-white border-2 border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-50 hover:border-gray-300 transition-all flex items-center gap-2"
+                    >
+                      <LogOut className="w-5 h-5" />
+                      退出
+                    </button>
+                  </div>
                 )}
               </div>
             </div>
